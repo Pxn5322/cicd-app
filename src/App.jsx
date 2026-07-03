@@ -4,6 +4,7 @@ import { Button, Container, Form } from 'react-bootstrap'
 
 function App() {
   const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
   const [isFormValid, setIsFormValid] = useState(false);
 
   const checkFormValidity = () => {
@@ -28,6 +29,18 @@ function App() {
             onChange={(e) => setEmail(e.target.value)}
             required
             data-testid="emailInput"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            type="password"
+            placeholder="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            pattern="(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}"
+            required
+            data-testid="passwordInput"
           />
         </Form.Group>
         <Button
